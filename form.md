@@ -3,7 +3,7 @@
 Standaard gebruikt Swis_Form de Zend_Form_Decorators. Niet echt de meest makkelijke manier om een formulier weer te geven. 
 De nieuwe Swis_Form_Renderer moet het leven een stuk makkelijker maken voor de developer.
 
-## Voor de ongeduldige developer:
+## Voor de ongeduldige developer...
 Een snel voorbeeld. 
 Plaats deze code in een Swis controller.
 ```php
@@ -36,9 +36,9 @@ Deze handigheid zit dus nu ook in de Swis_Form
 
 Om een mask te gebruiken hoef je alleen maar de volgende regel aan de element opties mee te geven.
 ```php
-array(
+$oElement = new Zend_Form_Element_Text('title', array(
     'mask' => 'default'
-)
+));
 ```
 
 Om een andere mask dan de 'default' te gebruiken doe je het volgende. 
