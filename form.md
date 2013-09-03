@@ -54,6 +54,13 @@ array(
 )
 ```
 
+Mocht je niet elke keer een 'default' willen toevoegen in de element opties, dan kun je op deze manier
+altijd een default mask gebruiken
+```php
+$oForm->forceMask();
+```
+
+
 ## Tokens
 Zoals je hebt kunnen zien in de mask zijn er stukken tekst die vervangen moeten worden met daadwerkelijke code, 
 zoals bijvoorbeeld {element}. 
