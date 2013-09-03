@@ -3,16 +3,17 @@
 Standaard gebruikt Swis_Form de Zend_Form_Decorators. Niet echt de meest makkelijke manier om een formulier weer te geven. 
 De nieuwe Swis_Form_Renderer moet het leven een stuk makkelijker maken voor de developer.
 
-### Een snel voorbeeld
+## Voor de ongeduldige developer:
+Een snel voorbeeld. 
 Plaats deze code in een Swis controller.
 ```php
 public function indexAction() {
 
-    $oForm = new Swis_Form
+    $oForm = new Swis_Form();
     $oForm->addElement(new Zend_Form_Element_Text(array(
       'label' => 'Titel',
       'mask' => 'default',
-    ));
+    )));
 
     $this->view->assign('oForm', $oForm);
   
@@ -51,4 +52,25 @@ Je kunt ook direct een custom mask meegeven als optie:
 array(
     'mask' => '<div class="inputContainer">{label}{element}{error}</div>' 
 )
+```
+
+## Tokens
+Zoals je hebt kunnen zien in de mask zijn er stukken tekst die vervangen moeten worden met daadwerkelijke code, 
+zoals bijvoorbeeld {element}. 
+Dit wordt in Swis_Form een token genoemd.
+Er zijn al standaard tokens beschikbaar die gebruikt kunnen worden, zoals {label}, {element}, {error}.
+
+### Zelf tokens toevoegen
+Soms is het handig om eigen tokens toe te voegen of een bestaande token aan te passen.
+Dit is een voorbeeld hoe je een eigen token toevoegt en in de code gebruikt:
+```php
+
+// Voeg een token toe
+$oForm->replace('title', function($element) {
+    // Doe hier iets leuks en return een titel
+    return 'Een titel';
+});
+
+// Gebruik deze token in een mask
+$oForm->setMask('default', '<div class="inputContainer element-{title}">{label}{element}{error}</div>');
 ```
