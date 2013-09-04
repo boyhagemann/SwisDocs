@@ -13,20 +13,27 @@ De database elementen hebben allemaal dezelfde configuratie opties:
 
 ```php
 $oElement = new Swis_Form_DatabaseSelect('categories', array(
-    'table'   => 'categories',
-    'field'   => 'title', // wordt weergegeven in de select lijst
-    'key'     => 'id', // de column die als value gebruikt wordt,
-    'empty'   => '--- kies een categorie ---' // wordt toegevoegd als eerste lege optie
-    'before'  => function($q) {
-        
-        // Je kunt hier de Zend_Db_Query nog aanpassen
+
+    // Kies de database tabel
+    'table' => 'categories',
+    
+    // De column die wordt weergegeven in de select lijst
+    // Dit staat standaard al op 'titel'.
+    'field' => 'title', 
+    
+    // De column die als value gebruikt wordt.
+    // Dit staat standaard al op 'id'.
+    'key' => 'id', 
+    
+    // Dit wordt toegevoegd als eerste lege optie
+    'empty' => '--- kies een categorie ---' 
+    
+    // Je kunt hier de Zend_Db_Query nog aanpassen
+    'before' => function($q) {
         $q->orderBy('title');
     }
 ));
 ```
-
-In de configuratie staat de 'field' standaard op 'titel' en de 'key' standaard op 'id'. 
-Meestal zul je dus deze opties niet te hoeven aanpassen.
 
 ## Voorbeeld in [Swis_Form] (form.md)
 ```php
