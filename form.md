@@ -71,8 +71,10 @@ Dit is een voorbeeld hoe je een eigen token toevoegt en in de code gebruikt:
 ```php
 // Voeg een token toe
 $oForm->replace('title', function($element) {
+
     // Doe hier iets leuks en return een titel
-    return 'Een titel';
+    // Je kunt gebruik maken van het Zend_Form_Element
+    return $element->getTitle();
 });
 
 // Gebruik deze token in een mask
@@ -80,16 +82,23 @@ $oForm->setMask('default', '<div class="inputContainer element-{title}">{label}{
 ```
 
 ### Pas een bestaande token aan
-Dit kan een standaard variabele zijn, maar ook een closure of een class van een Zend_Decorator.
 ```php
+// Dit kan een standaard variabele zijn...
 $oForm->replace('label', 'Standaard label');
+
+// ...maar ook een class van een Zend_Decorator...
 $oForm->replace('label', 'My_Form_Decorator_Label');
+
+// ... of een closure...
 $oForm->replace('label', function($element) {
     return $element->getLabel() . ':';
 });
+
+// Pas bijvoorbeeld de bestaande label aan zodat je
+// html code in een label kan zetten...
 $oForm->replace('label', function() {
 	$label = new Zend_Form_Decorator_Label();
-	$label->setOption('escape', false); // je kunt nu html code in een label zetten...
+	$label->setOption('escape', false); 
 	return $label;
 });
 ```
