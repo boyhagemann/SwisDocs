@@ -5,7 +5,7 @@ De nieuwe Swis_Form_Renderer moet het leven een stuk makkelijker maken voor de d
 
 ## Voor de ongeduldige developer...
 Een snel voorbeeld. 
-Plaats deze code in een Swis controller.
+Plaats deze code in een Swis controller:
 ```php
 public function indexAction() {
 
@@ -22,12 +22,10 @@ public function indexAction() {
 }
 ```
 
-Plaats de volgende code in de view
+... en plaats de volgende code in de view:
 ```php
 {$oForm}
 ```
-
-Dit is genoeg om een Swis_Form te renderen in een view zonder dat er vieze decorators gebruikt worden.
 
 ## Masks
 Het handige van FormHandler zijn voornamelijk de masks. 
@@ -54,6 +52,7 @@ array(
 )
 ```
 
+### Altijd masks gebruiken?
 Mocht je niet elke keer een 'default' willen toevoegen in de element opties, dan kun je op deze manier
 altijd een default mask gebruiken
 ```php
