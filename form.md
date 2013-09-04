@@ -60,7 +60,6 @@ altijd een default mask gebruiken
 $oForm->forceMask();
 ```
 
-
 ## Tokens
 Zoals je hebt kunnen zien in de mask zijn er stukken tekst die vervangen moeten worden met daadwerkelijke code, 
 zoals bijvoorbeeld {element}. 
@@ -71,7 +70,6 @@ Er zijn al standaard tokens beschikbaar die gebruikt kunnen worden, zoals {label
 Soms is het handig om eigen tokens toe te voegen of een bestaande token aan te passen.
 Dit is een voorbeeld hoe je een eigen token toevoegt en in de code gebruikt:
 ```php
-
 // Voeg een token toe
 $oForm->replace('title', function($element) {
     // Doe hier iets leuks en return een titel
@@ -80,4 +78,19 @@ $oForm->replace('title', function($element) {
 
 // Gebruik deze token in een mask
 $oForm->setMask('default', '<div class="inputContainer element-{title}">{label}{element}{error}</div>');
+```
+
+### Pas een bestaande token aan
+Dit kan een standaard variabele zijn, maar ook een closure of een class van een Zend_Decorator.
+```php
+$oForm->replace('label', 'Standaard label');
+$oForm->replace('label', 'My_Form_Decorator_Label');
+$oForm->replace('label', function($element) {
+    return $element->getLabel() . ':';
+});
+$oForm->replace('label', function() {
+	$label = new Zend_Form_Decorator_Label();
+	$label->setOption('escape', false); // je kunt nu html code in een label zetten...
+	return $label;
+});
 ```
