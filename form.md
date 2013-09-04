@@ -42,13 +42,13 @@ $oElement = new Zend_Form_Element_Text('title', array(
 Om een andere mask dan de 'default' te gebruiken doe je het volgende. 
 In de Swis_Form voeg je een mask toe:
 ```php
-$oForm->setMask('titel', '<div class="titel">{element}</div>');
+$oForm->setMask('titel', '<div class="titel">{field}</div>');
 ```
 
 Je kunt ook direct een custom mask meegeven als optie:
 ```php
 array(
-    'mask' => '<div class="inputContainer">{label}{element}{error}</div>' 
+    'mask' => '<div class="inputContainer">{label}{field}{error}</div>' 
 )
 ```
 
@@ -63,7 +63,7 @@ $oForm->forceMask();
 Zoals je hebt kunnen zien in de mask zijn er stukken tekst die vervangen moeten worden met daadwerkelijke code, 
 zoals bijvoorbeeld {element}. 
 Dit wordt in Swis_Form een token genoemd.
-Er zijn al standaard tokens beschikbaar die gebruikt kunnen worden, zoals {label}, {element}, {error}.
+Er zijn al standaard tokens beschikbaar die gebruikt kunnen worden, zoals {label}, {field}, {error}, {id} en {name}.
 
 ### Zelf tokens toevoegen
 Soms is het handig om eigen tokens toe te voegen of een bestaande token aan te passen.
@@ -78,7 +78,7 @@ $oForm->replace('title', function($element) {
 });
 
 // Gebruik deze token in een mask
-$oForm->setMask('default', '<div class="inputContainer element-{title}">{label}{element}{error}</div>');
+$oForm->setMask('default', '<div class="inputContainer element-{title}">{label}{field}{error}</div>');
 ```
 
 ### Pas een bestaande token aan
